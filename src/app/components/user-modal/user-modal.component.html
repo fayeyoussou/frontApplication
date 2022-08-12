@@ -1,0 +1,28 @@
+<h1>Ajout d'utilisateur</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Prenom</mat-label>
+    <input matInput >
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput >
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="mail" matInput >
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  <section class="example-section">
+    <h4>Role</h4>
+    <p><mat-checkbox >Admin</mat-checkbox></p>
+    <p><mat-checkbox >User</mat-checkbox></p>
+  </section>
+  <div mat-dialog-actions ></div>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left : 8px" mat-raised-button color="primary" mat-dialog-close>Save</button>
+
+</div>
+
