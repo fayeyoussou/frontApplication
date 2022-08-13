@@ -1,0 +1,15 @@
+<h1>Ajout de Categorie</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+  <mat-form-field appearance="outline">
+    <mat-label>Nom de la Categorie</mat-label>
+    <input matInput formControlName="nom">
+    <mat-hint>{{error.nom}}</mat-hint>
+  </mat-form-field>
+  <div mat-dialog-action [align]="'end'" >
+  <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+  <button type="submit" style="margin-left : 12px" mat-raised-button color="primary" [disabled]="!form.valid">{{this.data==null ? "Sauvergarder" : "Modifier"}}</button>
+</div>
+</form>
+</div>
+

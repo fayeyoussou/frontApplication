@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 // import { LoginComponent } from './components/login/login.component';
 // import { ProfilComponent } from './components/profil/profil.component';
 // import { RegisterComponent } from './components/register/register.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import  {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -22,7 +22,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ProduitModalComponent } from './components/produit-modal/produit-modal.component';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -31,6 +30,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { CategorieComponent } from './components/categorie/categorie.component';
+import { CategorieModalComponent } from './components/modal/categorie-modal/categorie-modal.component';
+import { ProduitComponent } from './components/produit/produit.component';
+import { ProduitModalComponent } from './components/modal/produit-modal/produit-modal.component';
+
+
 
 
 
@@ -45,8 +53,11 @@ import {MatRadioModule} from '@angular/material/radio';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    ProduitModalComponent,
     UserModalComponent,
+    CategorieComponent,
+    CategorieModalComponent,
+    ProduitComponent,
+    ProduitModalComponent,
 
   ],
   imports: [
@@ -54,6 +65,7 @@ import {MatRadioModule} from '@angular/material/radio';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -68,7 +80,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

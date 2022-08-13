@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       next: (result: any)=>{
         if(result.success == true) {
           localStorage.setItem('access_token', result.data.token)
-          this.route.navigate(['/register']);
+          this.route.navigate(['/login']);
         }
 
         else

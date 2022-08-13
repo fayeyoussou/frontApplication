@@ -6,68 +6,47 @@ import { UserModalComponent } from '../user-modal/user-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { ProduitService } from 'src/app/services/produit.service';
+import { ProduitModalComponent } from '../modal/produit-modal/produit-modal.component';
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-produit',
+  templateUrl: './produit.component.html',
+  styleUrls: ['./produit.component.scss']
 })
-export class RegisterComponent implements OnInit {
-  displayedColumns: string[] = ['Nom Complet', 'Email', 'Roles', 'Action'];
+export class ProduitComponent implements OnInit {
+
+  displayedColumns: string[] = ['libelle', 'stock', 'categorie','user', 'Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
-    private userService: UserService,
+    private api: ProduitService,
     private modalService: NgbModal,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.getAllUsers();
+    this.getAllProduits()
   }
-
-  //subscribe(data=>console.log(data),error=>this.handleError(error));
 
   openModal = (): void => {
     this.dialog
-      .open(UserModalComponent, {
+      .open(ProduitModalComponent, {
         width: '40%',
       })
       .afterClosed()
       .subscribe((val) => {
-        this.getAllUsers();
+        this.getAllProduits();
       });
   };
-  editUser(row: any) {
-    this.dialog
-      .open(UserModalComponent, {
-        width: '40%',
-        data: row,
-      })
-      .afterClosed()
-      .subscribe((val) => {
-        this.getAllUsers();
-      });
-  }
-  deleteUser(row: any) {
-    this.userService.deleteUser(row.id).subscribe({
-      next: (result: any) => {
-        // console.log(result.data)
-        console.log(result);
-        this.getAllUsers();
-      },
-    });
-  }
-  getAllUsers() {
-    this.userService.getUsers().subscribe({
-      next: (result: any) => {
-        // console.log(result.data)
+  getAllProduits(){
+    this.api.getProduits().subscribe({
+      next : (result: any)=> {
         this.dataSource = new MatTableDataSource(result.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      },
-    });
+      }
+    })
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -77,4 +56,24 @@ export class RegisterComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  editProduit(row:any){
+    this.dialog
+      .open(ProduitModalComponent, {
+        width: '40%',
+        data : row
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        this.getAllProduits();
+      });
+  }
+  deleteProduit(row:any){
+    this.api.deleteProduit(row.id).subscribe({
+      next:(result)=>{
+        this.getAllProduits();
+        
+      }
+    })
+  }
+
 }
