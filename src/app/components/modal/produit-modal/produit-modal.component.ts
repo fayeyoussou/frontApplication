@@ -61,7 +61,7 @@ export class ProduitModalComponent implements OnInit {
           next: (result: any) => {
             if (result.success == true) {
               this.dialogRef.close('added');
-            } else this.errors = this.data
+            } else this.errors = result.data;
           },
         });
       } else {

@@ -18,6 +18,9 @@ export class UserService {
   login(data:any){
     return this.http.post(Config.url+'login',data);
   }
+  logout(){
+    return this.http.post(Config.url+"logout","",{ headers: this.headers })
+  }
   getCategory(){
     console.log(localStorage.getItem("access_token"))
     return this.http.get(Config.urlCategorie,{ headers: this.headers });
@@ -37,6 +40,9 @@ export class UserService {
   }
   deleteUser(id:number){
     return this.http.delete(Config.urlUser+id,{ headers: this.headers });
+  }
+  getUser(){
+    return this.http.get(Config.url+"get",{ headers: this.headers });
   }
 
 

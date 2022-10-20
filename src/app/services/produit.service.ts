@@ -21,6 +21,6 @@ export class ProduitService {
     return this.http.put(this.url+id,data,this.headers)
   }
   deleteProduit(id:number){
-    return this.http.delete(this.url+id);
+    return this.http.delete(this.url+id,this.headers);
   }
 }

@@ -18,9 +18,18 @@ export class LoginComponent implements OnInit {
     password : null,
     error : null
   }
-  constructor(private userService : UserService, private route : Router,private modalService: NgbModal) { }
+  constructor(private userService : UserService, private route : Router,private modalService: NgbModal) {
+    this.userService.getUser().subscribe({
+      next: (result: any) => {
+        if (result.success == true) {
+          this.route.navigate(['/produit']);
+        }
+      },
+    });
+  }
 
   ngOnInit(): void {
+
   }
   submitLogin(){
     return this.userService
@@ -29,7 +38,7 @@ export class LoginComponent implements OnInit {
       next: (result: any)=>{
         if(result.success == true) {
           localStorage.setItem('access_token', result.data.token)
-          this.route.navigate(['/login']);
+          this.route.navigate(['/produit']);
         }
 
         else

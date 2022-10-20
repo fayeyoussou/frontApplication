@@ -14,15 +14,15 @@
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <img
       class="avatar mat-elevation-z8"
-      src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+      src="assets/profil.jpeg"
     />
 
-    <h4 class="name">John Smith</h4>
-    <p class="designation">Software Engineer</p>
+    <h4 class="name">{{user.prenom+" "+user.nom}}</h4>
+    <p class="designation">{{user.roles}}</p>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/user">
+    <button *ngIf="'Admin' in user.roles" mat-button class="menu-button" routerLink="/user">
       <mat-icon>person</mat-icon>
       <span>User</span>
     </button>
@@ -42,7 +42,7 @@
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/help">
+    <button mat-button class="menu-button" (click)="logout()">
       <mat-icon>help</mat-icon>
       <span>deconnecter</span>
     </button>

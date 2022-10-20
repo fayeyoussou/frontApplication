@@ -11,10 +11,6 @@ const routes: Routes = [
     path :'login',
     component : LoginComponent
   },
-  // {
-  //   path :'profil',
-  //   component : ProfilComponent
-  // },
 
   {
     path :'user',
